@@ -1,0 +1,16 @@
+package com.ikeda.kakeibo.exception;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import jakarta.persistence.EntityNotFoundException;
+
+@RestControllerAdvice
+public class ApiExceptionHandler {
+	
+	@ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Void> handleNotFound(EntityNotFoundException e) {
+        return ResponseEntity.notFound().build();
+    }
+}

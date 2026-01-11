@@ -1,4 +1,4 @@
-package com.ikeda.kakeibo.dto;
+package com.ikeda.kakeibo.dto.response;
 
 import java.time.LocalDate;
 
