@@ -20,14 +20,14 @@ public class IncomeExpenseDto {
 	private int categoryId;
 	private String memo;
 	
-	public IncomeExpenseDto(IncomeExpense e) {
-		this.id = e.getId();
-		this.typeId = e.getTypeId();
-		this.price = e.getPrice();
-		this.accountingDate = e.getAccountingDate();
-		this.settlementDate = e.getSettlementDate();
-		this.lastUpdateAt = e.getLastUpdateAt();
-		this.categoryId = e.getCategoryId();
-		this.memo = e.getMemo();
+	public IncomeExpenseDto(IncomeExpense ie) {
+		this.id = ie.getId();
+		this.typeId = ie.getTypeId();
+		this.price = ie.getPrice();
+		this.accountingDate = ie.getAccountingDate();
+		this.settlementDate = ie.getSettlementDate();
+		this.lastUpdateAt = ie.getLastUpdateAt();
+		this.categoryId = ie.getCategoryId();
+		this.memo = ie.getMemo();
 	}
 }
