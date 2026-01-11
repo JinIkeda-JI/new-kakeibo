@@ -1,0 +1,33 @@
+# ====================
+# OS / Editor
+# ====================
+.DS_Store
+Thumbs.db
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VSCode
+.vscode/
+
+# ====================
+# Java / Spring Boot
+# ====================
+**/build/
+**/target/
+**/.gradle/
+**/*.log
+
+# ====================
+# Node / React
+# ====================
+**/node_modules/
+**/dist/
+
+# ====================
+# Optional (今回は残してもOK)
+# ====================
+# **/.env
+# **/.env.*
