@@ -1,4 +1,4 @@
-import { API_BASE } from "../utils/BaseUrl";
+import { API_BASE } from "../../../utils/BaseUrl";
 import { type IncomeExpenseDto } from "../types/response/IncomeExpenseDto";
 import type { IncomeExpenseRequest } from "../types/request/incomeExpenseRequest";
 
