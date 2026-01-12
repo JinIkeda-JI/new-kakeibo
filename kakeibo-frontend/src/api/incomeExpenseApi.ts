@@ -1,5 +1,5 @@
 import { API_BASE } from "../utils/BaseUrl"
-import { type IncomeExpenseDto } from "../types/IncomeExpenseDto"
+import { type IncomeExpenseDto } from "../types/response/IncomeExpenseDto"
 
 const BASE_URL = API_BASE + '/income-expenses';
 
