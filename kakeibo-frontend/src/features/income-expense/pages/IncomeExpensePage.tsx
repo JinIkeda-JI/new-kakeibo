@@ -2,7 +2,7 @@ import type { IncomeExpenseRequest } from "../types/request/incomeExpenseRequest
 import { IncomeExpenseForm } from "../components/IncomeExpenseForm";
 import { useIncomeExpensePage } from "../service/useIncomeExpensePage";
 
-export function IncomeExpensePage() {
+export default function IncomeExpensePage() {
   const vm = useIncomeExpensePage();
 
   return (
