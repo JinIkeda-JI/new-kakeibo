@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { IncomeExpenseDto } from "../types/IncomeExpenseDto";
+import type { IncomeExpenseDto } from "../types/response/IncomeExpenseDto";
 import { fetchIncomeExpenseById, fetchIncomeExpenses } from "../api/incomeExpenseApi";
 
 export function IncomeExpensePage() {
