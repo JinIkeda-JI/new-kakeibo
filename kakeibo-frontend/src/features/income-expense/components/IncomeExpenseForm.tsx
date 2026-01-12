@@ -29,7 +29,7 @@ export function IncomeExpenseForm({ mode, initial, submitting, onSubmit }: Props
   async function submit(e: React.FormEvent) {
     e.preventDefault();
 
-    // 最低限のチェックだけ（本格は後でOK）
+    // 最低限のバリデーション
     if (!form.accountingDate) return alert("計上日を入力してね");
     if (!Number.isFinite(form.price) || form.price <= 0) return alert("金額は正の数で入力してね");
 

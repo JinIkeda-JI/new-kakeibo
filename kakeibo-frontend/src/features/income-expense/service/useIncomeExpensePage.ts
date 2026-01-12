@@ -25,7 +25,7 @@ export function useIncomeExpensePage() {
 
   const [submitting, setSubmitting] = useState(false);
 
-  // ---------- 状態遷移（ここが肝） ----------
+  // ---------- 状態遷移 ----------
   function startCreate() {
     setFormMode("create");
     setEditing(null);
@@ -37,6 +37,7 @@ export function useIncomeExpensePage() {
   }
 
   // ---------- API ----------
+  /** 全件検索 */
   async function loadList() {
     setLoading(true);
     setError(null);
@@ -50,6 +51,7 @@ export function useIncomeExpensePage() {
     }
   }
 
+  /** ID検索 */
   async function searchById() {
     setSingle(null);
     setSingleError(null);
@@ -69,6 +71,7 @@ export function useIncomeExpensePage() {
     }
   }
 
+  /** 登録 */
   async function handleCreate(req: IncomeExpenseRequest) {
     setSubmitting(true);
     try {
@@ -79,6 +82,7 @@ export function useIncomeExpensePage() {
     }
   }
 
+  /** 更新 */
   async function handleUpdate(req: IncomeExpenseRequest) {
     if (!editing) {
       alert("編集対象が選択されてない");
@@ -95,6 +99,7 @@ export function useIncomeExpensePage() {
     }
   }
 
+  /** 削除 */
   async function handleDelete(id: number) {
     if (!confirm(`id=${id} を削除する？`)) return;
 
@@ -102,7 +107,7 @@ export function useIncomeExpensePage() {
     try {
       await deleteIncomeExpense(id);
 
-      // 即時反映（loadListは保険で後で呼んでもOK）
+      // 即時反映
       setItems((prev) => prev.filter((x) => x.id !== id));
 
       if (single?.id === id) setSingle(null);
@@ -116,7 +121,7 @@ export function useIncomeExpensePage() {
     loadList();
   }, []);
 
-  // ---------- Form用の派生値 ----------
+  // ---------- Form用 ----------
   const formKey = useMemo(
     () => (formMode === "edit" ? `edit-${editing?.id ?? "none"}` : "create"),
     [formMode, editing?.id]
