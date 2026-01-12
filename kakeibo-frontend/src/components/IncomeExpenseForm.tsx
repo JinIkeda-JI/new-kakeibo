@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { today } from "../utils/constant";
 import type { IncomeExpenseRequest } from "../types/request/incomeExpenseRequest"
 
 type Props = {
     mode : "create" | "edit";
     initial ?: IncomeExpenseRequest;
+    editingId ?: number;
     submitting : boolean;
     onSubmit : (req: IncomeExpenseRequest) => Promise<void> | void;
 }
@@ -20,11 +21,6 @@ const empty: IncomeExpenseRequest = {
 
 export function IncomeExpenseForm({ mode, initial, submitting, onSubmit }: Props) {
   const [form, setForm] = useState<IncomeExpenseRequest>(initial ?? empty);
-
-  // edit対象が切り替わったらフォームに反映
-  useEffect(() => {
-    setForm(initial ?? empty);
-  }, [initial]);
 
   function set<K extends keyof IncomeExpenseRequest>(key: K, value: IncomeExpenseRequest[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));

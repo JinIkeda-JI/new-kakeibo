@@ -12,7 +12,13 @@ async function request<T>(url: string, init?: RequestInit): Promise<T> {
     throw new Error(`HTTP ${res.status} ${res.statusText} ${text}`.trim());
   }
 
-  return (await res.json()) as T;
+  if (res.status === 204 || res.status === 205) {
+    return undefined as T;
+  }
+
+  const text = await res.text();
+  if (!text) return undefined as T;
+  return JSON.parse(text) as T;
 }
 
 export function fetchIncomeExpenses(): Promise<IncomeExpenseDto[]> {
@@ -29,4 +35,18 @@ export function createIncomeExpense(req: IncomeExpenseRequest) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),
   });
+}
+
+export function updateIncomeExpense(id: number, req: IncomeExpenseRequest){
+  return request<IncomeExpenseDto>(`${BASE_URL}/${id}`,{
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+}
+
+export function deleteIncomeExpense(id: number){
+  return request<void>(`${BASE_URL}/${id}`,{
+    method: "DELETE"
+  })
 }
