@@ -25,7 +25,7 @@ public class IncomeExpenseController {
 	}
 	
 	@GetMapping("/{id}")
-	public IncomeExpenseDto getRecordById(@PathVariable int id) {
+	public IncomeExpenseDto getRecordById(@PathVariable("id") int id) {
 		return service.getRecordById(id);
 	}
 	
@@ -36,12 +36,12 @@ public class IncomeExpenseController {
 	}
 	
 	@PutMapping("/{id}")
-	public IncomeExpenseDto update(@PathVariable int id, @RequestBody IncomeExpenseRequest request) {
+	public IncomeExpenseDto update(@PathVariable("id") int id, @RequestBody IncomeExpenseRequest request) {
 		return service.update(id, request);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable int id) {
+	public void delete(@PathVariable("id") int id) {
 		service.delete(id);
 	}
 }
