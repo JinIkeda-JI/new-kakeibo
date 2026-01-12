@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import type { IncomeExpenseDto } from "../types/IncomeExpenseDto";
-import { fetchIncomeExpenseById, fetchIncomeExpenses } from "../api/incomeExpenseApi";
+import type { IncomeExpenseDto } from "../types/response/IncomeExpenseDto";
+import { createIncomeExpense, fetchIncomeExpenseById, fetchIncomeExpenses } from "../api/incomeExpenseApi";
+import { IncomeExpenseForm } from "../components/IncomeExpenseForm";
+import type { IncomeExpenseRequest } from "../types/request/incomeExpenseRequest";
 
 export function IncomeExpensePage() {
   const [items, setItems] = useState<IncomeExpenseDto[]>([]);
@@ -10,6 +12,7 @@ export function IncomeExpensePage() {
   const [idInput, setIdInput] = useState("");
   const [single, setSingle] = useState<IncomeExpenseDto | null>(null);
   const [singleError, setSingleError] = useState<string | null>(null);
+  const [submitting , setSubmitting] = useState(false);
 
   async function loadList() {
     setLoading(true);
@@ -52,6 +55,17 @@ export function IncomeExpensePage() {
     loadList();
   }, []);
 
+  async function handleCreate (req:IncomeExpenseRequest) {
+    setSubmitting(true);
+    try{
+      await createIncomeExpense(req);
+      await loadList();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : String(e));
+    } finally {
+      setSubmitting(false)
+    }
+  }
   return (
     <div style={{ padding: 16 }}>
       <h1>IncomeExpense</h1>
@@ -98,6 +112,8 @@ export function IncomeExpensePage() {
           <div>memo: {single.memo ?? ""}</div>
         </div>
       )}
+
+      <IncomeExpenseForm mode="create" submitting={submitting} onSubmit={handleCreate} />
 
       <table style={{ width: "100%", marginTop: 12, borderCollapse: "collapse" }}>
         <thead>
