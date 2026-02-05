@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",
+    "vscjava.vscode-gradle",
+    "vmware.vscode-spring-boot",
+    "vmware.vscode-boot-dev-pack",
+    "vscjava.vscode-spring-boot-dashboard",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker"
+  ]
+}

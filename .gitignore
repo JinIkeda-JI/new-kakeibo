@@ -9,8 +9,9 @@ Thumbs.db
 .classpath
 .settings/
 
-# VSCode
-.vscode/
+# VSCode (.vscode/tasks.jsonとlaunch.jsonは共有するため除外しない)
+.vscode/settings.json
+.vscode/*.code-workspace
 
 # ====================
 # Java / Spring Boot

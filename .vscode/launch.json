@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug Backend (Spring Boot)",
+      "request": "launch",
+      "mainClass": "com.ikeda.kakeibo.KakeiboApplication",
+      "projectName": "kakeibo-backend",
+      "cwd": "${workspaceFolder}/kakeibo-backend",
+      "env": {
+        "SPRING_PROFILES_ACTIVE": "dev"
+      },
+      "preLaunchTask": "Start Database"
+    },
+    {
+      "type": "java",
+      "name": "Run Backend (Spring Boot)",
+      "request": "launch",
+      "mainClass": "com.ikeda.kakeibo.KakeiboApplication",
+      "projectName": "kakeibo-backend",
+      "cwd": "${workspaceFolder}/kakeibo-backend",
+      "console": "integratedTerminal",
+      "preLaunchTask": "Start Database"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All Services (Debug)",
+      "configurations": ["Debug Backend (Spring Boot)"],
+      "preLaunchTask": "Start Database",
+      "presentation": {
+        "hidden": false,
+        "group": "",
+        "order": 1
+      },
+      "stopAll": true
+    }
+  ]
+}
