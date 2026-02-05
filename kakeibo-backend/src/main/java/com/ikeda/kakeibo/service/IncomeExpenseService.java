@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ikeda.kakeibo.dto.request.IncomeExpenseRequest;
 import com.ikeda.kakeibo.dto.response.IncomeExpenseDto;
@@ -38,7 +37,7 @@ public class IncomeExpenseService {
 	 * @param id 検索するID
 	 * @return ImcomeExpenseDto 収支のレコード　1件
 	 */
-	public IncomeExpenseDto getRecordById(@PathVariable("id") int id) {
+	public IncomeExpenseDto getRecordById(int id) {
 		return repository.findById(id).map(IncomeExpenseDto::new)
 				.orElseThrow(() -> new EntityNotFoundException("Target income-expense record was not found : id=" + id));
 	}
@@ -61,7 +60,7 @@ public class IncomeExpenseService {
 	 * @param request
 	 * @return
 	 */
-	public IncomeExpenseDto update(@PathVariable int id, IncomeExpenseRequest request) {
+	public IncomeExpenseDto update(int id, IncomeExpenseRequest request) {
 		IncomeExpense targetObj = repository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Target income-expense record was not found : id=" + id));
 		setColumnValues(request, targetObj);
@@ -73,7 +72,7 @@ public class IncomeExpenseService {
 	 * 収支の削除
 	 * @param id
 	 */
-	public void delete(@PathVariable int id) {
+	public void delete(int id) {
 		IncomeExpense targetObj = repository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Target income-expense record was not found : id=" + id));
 		repository.delete(targetObj);

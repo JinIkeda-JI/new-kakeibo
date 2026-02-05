@@ -9,6 +9,8 @@ import com.ikeda.kakeibo.dto.request.IncomeExpenseRequest;
 import com.ikeda.kakeibo.dto.response.IncomeExpenseDto;
 import com.ikeda.kakeibo.service.IncomeExpenseService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/income-expenses")
 public class IncomeExpenseController {
@@ -31,12 +33,12 @@ public class IncomeExpenseController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public IncomeExpenseDto insert(@RequestBody IncomeExpenseRequest request) {
+	public IncomeExpenseDto insert(@Valid @RequestBody IncomeExpenseRequest request) {
 		return service.insert(request);
 	}
 	
 	@PutMapping("/{id}")
-	public IncomeExpenseDto update(@PathVariable("id") int id, @RequestBody IncomeExpenseRequest request) {
+	public IncomeExpenseDto update(@PathVariable("id") int id, @Valid @RequestBody IncomeExpenseRequest request) {
 		return service.update(id, request);
 	}
 	

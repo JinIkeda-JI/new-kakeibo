@@ -1,7 +1,7 @@
 package com.ikeda.kakeibo.controller;
 
 import com.ikeda.kakeibo.entity.Transaction;
-import com.ikeda.kakeibo.repository.TransactionRepository;
+import com.ikeda.kakeibo.service.TransactionService;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -11,15 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionController {
+	private final TransactionService service;
 
-	private final TransactionRepository repo;
-	
-	public TransactionController(TransactionRepository repo) {
-		this.repo = repo;
+	public TransactionController(TransactionService service) {
+        this.service = service;
 	}
 	
     @GetMapping
     public List<Transaction> list() {
-       return repo.findAll();
+        return service.list();
     }
 }
