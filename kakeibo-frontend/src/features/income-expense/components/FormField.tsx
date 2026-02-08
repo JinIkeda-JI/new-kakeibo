@@ -1,4 +1,4 @@
-type FormFieldsProps = {
+type FormFieldProps = {
   label: string;
   type?: "text" | "number" | "date";
   value: string | number | null;
@@ -10,7 +10,7 @@ export const FormField = ({
   type = "text",
   value,
   onChange,
-}: FormFieldsProps) => {
+}: FormFieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
 

@@ -21,16 +21,16 @@ export function createIncomeExpense(req: IncomeExpenseRequest) {
   });
 }
 
-export function updateIncomeExpense(id: number, req: IncomeExpenseRequest){
-  return request<IncomeExpenseDto>(`${BASE_URL}/${id}`,{
+export function updateIncomeExpense(id: number, req: IncomeExpenseRequest) {
+  return request<IncomeExpenseDto>(`${BASE_URL}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),
   });
 }
 
-export function deleteIncomeExpense(id: number){
-  return request<void>(`${BASE_URL}/${id}`,{
-    method: "DELETE"
-  })
+export function deleteIncomeExpense(id: number) {
+  return request<void>(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
 }
