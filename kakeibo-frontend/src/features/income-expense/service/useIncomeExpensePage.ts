@@ -124,7 +124,7 @@ export function useIncomeExpensePage() {
   // ---------- Form用 ----------
   const formKey = useMemo(
     () => (formMode === "edit" ? `edit-${editing?.id ?? "none"}` : "create"),
-    [formMode, editing?.id]
+    [formMode, editing?.id],
   );
 
   const formInitial = useMemo<IncomeExpenseRequest | undefined>(() => {
@@ -137,7 +137,7 @@ export function useIncomeExpensePage() {
       categoryId: editing.categoryId,
       memo: editing.memo ?? null,
     };
-  }, [formMode, editing?.id]);
+  }, [formMode, editing]);
 
   return {
     // state
